@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AtividadeJS-03 - Antes e Depois</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; background:#eef9f1; color:#123; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; }
+    .card { background:white; padding:22px; border-radius:8px; box-shadow: 0 6px 18px rgba(10,30,20,0.06); width:360px; text-align:center;}
+    h1 { margin:0 0 12px; font-size:20px; }
+    button { padding:10px 16px; border-radius:6px; border:0; background:#4cd964; cursor:pointer; color:white; font-weight:700; }
+    button:hover { opacity:.95; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Atividade: Antes e Depois</h1>
+    <p>Clique e digite um número inteiro.</p>
+    <button id="numBtn">Digitar número</button>
+  </div>
+
+  <script>
+    document.getElementById('numBtn').addEventListener('click', function(){
+      let valor = prompt('Digite um número inteiro qualquer:');
+      if (valor === null) return;
+      valor = valor.trim();
+      if (valor === '') {
+        alert('Nenhum valor informado. Tente novamente.');
+        return;
+      }
+
+      // tentar converter para inteiro
+      if (!/^[-+]?\d+$/.test(valor)) {
+        alert('Por favor, digite um número inteiro válido.');
+        return;
+      }
+
+      const n = parseInt(valor, 10);
+      const antecessor = n - 1;
+      const sucessor = n + 1;
+
+      alert(`O antecessor de ${n} é ${antecessor}.\nO sucessor de ${n} é ${sucessor}.`);
+    });
+  </script>
+</body>
+</html>
